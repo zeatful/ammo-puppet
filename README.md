@@ -5,9 +5,9 @@ An ammo deal web scrapper using Puppeteer in headless mode running through Docke
 ## Services / Layout
 ---
 
-### Puppet
+### Puppeteer
 
-- Puppetter script and dependencies to perform webscrapping.  Files can be created for new items out side of ammo such as projectiles, propellants, brass and primers.  Then each can be manually configured to reuse the same Docker image and pass the cooresponding script file as index.js in the docker-compose configuration.  Any needed libraries are configured during the creation of the base Docker image
+- Puppeteer script and dependencies to perform webscrapping.  Files can be created for new items out side of ammo such as projectiles, propellants, brass and primers.  Then each can be manually configured to reuse the same Docker image and pass the cooresponding script file as index.js in the docker-compose configuration.  Any needed libraries are configured during the creation of the base Docker image
 
 ### Backstage
 
@@ -19,3 +19,10 @@ An ammo deal web scrapper using Puppeteer in headless mode running through Docke
 
 ## Getting Started
 ---
+
+### Requirements
+- Docker - this is all that is needed to get started
+- `.env` - create this file in the root directory and populate it with `SLACK_URL='YOUR_WEBHOOK_URL_HERE'`
+
+### Commands
+- From the root folder, run `docker-compose up -d` to get started
