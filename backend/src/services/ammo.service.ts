@@ -29,7 +29,7 @@ export class AmmoService {
         // check if it just became available
         let nowAvailable = (!entry.availability && ammo.availability);
         if(nowAvailable) {
-          this.notificationService.notify(ammo);          
+          this.notificationService.notifyAmmo(ammo);          
         }
       }
 
@@ -41,7 +41,7 @@ export class AmmoService {
       let result =  await this.ammoRepository.create(ammo);
       
       if(result.availability) {
-        this.notificationService.notify(result);
+        this.notificationService.notifyAmmo(result);
       }
       
       return result;      

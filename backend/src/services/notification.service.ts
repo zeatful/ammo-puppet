@@ -21,16 +21,16 @@ var SUBSCRIBED_AMMO = [CALIBER_223, CALIBER_556, CALIBER_762, CALIBER_380, CALIB
 export class NotificationService {
   constructor(/* Add @inject to inject parameters */) {}
 
-  notify(ammo: Ammo) {
+  notifyAmmo(ammo: Ammo) {
     console.log(ammo.id + '=> NOW AVAILABLE!');
 
     // only notify of specific ammo
     if(SUBSCRIBED_AMMO.includes(ammo.caliber)) {
-      this.notifySlack(ammo);
+      this.notifySlackAmmo(ammo);
     }
   }
 
-  notifySlack(ammo: Ammo) {
+  notifySlackAmmo(ammo: Ammo) {
     // calculate cost per round / cent per round
     let cpr = currency(ammo.price).divide(ammo.count).format();
 
@@ -74,6 +74,6 @@ export class NotificationService {
       ]
     };
     
-    axios.post(`${process.env.SLACK_URL}`, messageBody);
+    axios.post(`${process.env.AMMO_SLACK_URL}`, messageBody);
   }
 }

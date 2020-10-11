@@ -21,7 +21,8 @@ services:
     ports:
       - 3001:3000
     environment:
-      SLACK_URL: ${SLACK_URL}
+      AMMO_SLACK_URL: ${AMMO_SLACK_URL}
+      RELOADING_SLACK_URL: ${RELOADING_SLACK_URL}
 
   mongodb:
     image: 'mongo'
