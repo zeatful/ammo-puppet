@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+  puppet:
+    build: ./puppet
+    container_name: puppet
+    init: true
+    privileged: true
+    restart:
+      always
+    cap_add:
+      - SYS_ADMIN
+    volumes:
+      - ./puppet/ammo.js:/home/pptruser/index.js:ro
+    entrypoint: ['node', '/home/pptruser/index.js']
+
+  backend:
+    image: 'backend'
+    build: ./backend
+    container_name: 'backend'
+    ports:
+      - 3001:3000
+    environment:
+      SLACK_URL: ${SLACK_URL}
+
+  mongodb:
+    image: 'mongo'
+    container_name: 'mongo'
+    ports:
+      - 27017:27017
+    volumes:
+      - puppet-mongo:/data/db
+
+volumes:
+  puppet-mongo:

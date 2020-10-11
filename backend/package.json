@@ -1,0 +1,71 @@
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "description": "backend",
+  "keywords": [
+    "loopback-application",
+    "loopback"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "engines": {
+    "node": ">=10.16"
+  },
+  "scripts": {
+    "build": "lb-tsc",
+    "build:watch": "lb-tsc --watch",
+    "lint": "yarn run prettier:check && yarn run eslint",
+    "lint:fix": "yarn run eslint:fix && yarn run prettier:fix",
+    "prettier:cli": "lb-prettier \"**/*.ts\" \"**/*.js\"",
+    "prettier:check": "yarn run prettier:cli -l",
+    "prettier:fix": "yarn run prettier:cli --write",
+    "eslint": "lb-eslint --report-unused-disable-directives .",
+    "eslint:fix": "yarn run eslint --fix",
+    "pretest": "yarn run clean && yarn run build",
+    "test": "lb-mocha --allow-console-logs \"dist/__tests__\"",
+    "posttest": "yarn run lint",
+    "test:dev": "lb-mocha --allow-console-logs dist/__tests__/**/*.js && yarn run posttest",
+    "docker:build": "docker build -t backend .",
+    "docker:run": "docker run -p 3000:3000 -d backend",
+    "migrate": "node ./dist/migrate",
+    "openapi-spec": "node ./dist/openapi-spec",
+    "prestart": "yarn run build",
+    "start": "node -r source-map-support/register .",
+    "clean": "lb-clean dist *.tsbuildinfo .eslintcache"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "author": "Eric Foster <efoster@harriscomputer.com>",
+  "license": "",
+  "files": [
+    "README.md",
+    "dist",
+    "src",
+    "!*/__tests__"
+  ],
+  "dependencies": {
+    "@loopback/boot": "^2.5.0",
+    "@loopback/core": "^2.9.4",
+    "@loopback/repository": "^2.11.1",
+    "@loopback/rest": "^6.1.0",
+    "@loopback/rest-explorer": "^2.2.9",
+    "@loopback/service-proxy": "^2.3.7",
+    "@types/axios": "^0.14.0",
+    "@types/nodemailer": "^6.4.0",
+    "axios": "^0.20.0",
+    "currency.js": "^2.0.3",
+    "loopback-connector-mongodb": "^5.2.3",
+    "nodemailer": "^6.4.11",
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@loopback/build": "^6.2.1",
+    "@loopback/eslint-config": "^9.0.1",
+    "@loopback/testlab": "^3.2.3",
+    "@types/node": "^10.17.28",
+    "eslint": "^7.7.0",
+    "source-map-support": "^0.5.19",
+    "typescript": "~3.9.7"
+  }
+}

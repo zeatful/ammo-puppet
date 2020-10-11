@@ -1,0 +1,15 @@
+{
+  "name": "puppet",
+  "version": "1.0.0",
+  "description": "A puppeteer project",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "nodemailer": "^6.4.10",
+    "puppeteer": "^5.2.1"
+  }
+}
