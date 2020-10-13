@@ -1,10 +1,10 @@
 
-import {bind, BindingScope, inject} from '@loopback/core';
-import {repository} from '@loopback/repository';
+import {bind, BindingScope, inject} from '@loopback/core'
+import {repository} from '@loopback/repository'
 
-import {Ammo} from '../models';
-import {AmmoRepository} from '../repositories';
-import { NotificationService } from './notification.service';
+import {Ammo} from '../models'
+import {AmmoRepository} from '../repositories'
+import { NotificationService } from './notification.service'
 
 @bind({scope: BindingScope.TRANSIENT})
 export class AmmoService {
@@ -17,34 +17,34 @@ export class AmmoService {
 
   async add(ammo: Ammo): Promise<Ammo> {
     // check if entry already exists
-    let exists = await this.ammoRepository.exists(ammo.id);
+    let exists = await this.ammoRepository.exists(ammo.id)
 
     // if it exists, get original
     if(exists) {
       console.log(ammo.id + ' => exists');
-      let entry = await this.ammoRepository.findById(ammo.id);
+      let entry = await this.ammoRepository.findById(ammo.id)
 
       // if price or availability changed
       if ((entry.price !== ammo.price) || (entry.availability !== ammo.availability)) {
         // check if it just became available
         let nowAvailable = (!entry.availability && ammo.availability);
         if(nowAvailable) {
-          this.notificationService.notifyAmmo(ammo);          
+          this.notificationService.notifyAmmo(ammo)
         }
       }
 
       // update entry
-      this.ammoRepository.updateById(ammo.id, ammo);
-      return ammo;
+      this.ammoRepository.updateById(ammo.id, ammo)
+      return ammo
     } else {
       // create new entry
-      let result =  await this.ammoRepository.create(ammo);
+      let result =  await this.ammoRepository.create(ammo)
       
       if(result.availability) {
-        this.notificationService.notifyAmmo(result);
+        this.notificationService.notifyAmmo(result)
       }
       
-      return result;      
+      return result
     }
   }
 }

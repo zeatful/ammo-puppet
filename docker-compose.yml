@@ -1,9 +1,22 @@
 version: '3.7'
 
 services:
-  puppet:
+  # ammo-puppet:
+  #   build: ./puppet
+  #   container_name: ammo-puppet
+  #   init: true
+  #   privileged: true
+  #   restart:
+  #     always
+  #   cap_add:
+  #     - SYS_ADMIN
+  #   volumes:
+  #     - ./puppet/ammo.js:/home/pptruser/index.js:ro
+  #   entrypoint: ['node', '/home/pptruser/index.js']
+
+  primer-puppet:
     build: ./puppet
-    container_name: puppet
+    container_name: primer-puppet
     init: true
     privileged: true
     restart:
@@ -11,7 +24,7 @@ services:
     cap_add:
       - SYS_ADMIN
     volumes:
-      - ./puppet/ammo.js:/home/pptruser/index.js:ro
+      - ./puppet/primers.js:/home/pptruser/index.js:ro
     entrypoint: ['node', '/home/pptruser/index.js']
 
   backend:
@@ -19,8 +32,9 @@ services:
     build: ./backend
     container_name: 'backend'
     ports:
-      - 3001:3000
+      - 4000:4000
     environment:
+      PORT: 4000
       AMMO_SLACK_URL: ${AMMO_SLACK_URL}
       RELOADING_SLACK_URL: ${RELOADING_SLACK_URL}
 

@@ -1,6 +1,6 @@
 # Ammo Puppet
 
-An ammo deal web scrapper using Puppeteer in headless mode running through Docker, using Loopback for backend storage and notification to a slack channel for newly in-stock items and an Angular website to view current ammo availability.
+An ammo and reloading components web scrapper using Puppeteer in headless mode running through Docker, using Loopback for backend storage and messaging to a Slack channel for newly in-stock items and an Angular website to view current ammo availability.
 
 ## Services / Layout
 ---

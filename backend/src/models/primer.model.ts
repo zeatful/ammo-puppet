@@ -1,7 +1,7 @@
-import {Entity, model, property} from '@loopback/repository'
+import {Entity, model, property} from '@loopback/repository';
 
 @model()
-export class Ammo extends Entity {
+export class Primer extends Entity {
   @property({
     type: 'string',
     id: true,
@@ -44,27 +44,27 @@ export class Ammo extends Entity {
     type: 'string',
     required: true,
   })
-  caliber: string
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  grain: string
-
-  @property({
-    type: 'string',
-    required: true,
-  })
   model: string
 
-  constructor(data?: Partial<Ammo>) {
+  @property({
+    type: 'string',
+    required: true,
+  })
+  size: string
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  description: string
+
+  constructor(data?: Partial<Primer>) {
     super(data)
   }
 }
 
-export interface AmmoRelations {
+export interface PrimerRelations {
   // describe navigational properties here
 }
 
-export type AmmoWithRelations = Ammo & AmmoRelations
+export type PrimerWithRelations = Primer & PrimerRelations

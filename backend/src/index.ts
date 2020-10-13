@@ -10,7 +10,8 @@ export async function main(options: ApplicationConfig = {}) {
   const url = app.restServer.url;
   console.log(`Server is running at ${url}`);
   console.log(`Try ${url}/ping`);
-  console.log(`Slack Webhook: ${process.env.SLACK_URL}`);
+  console.log(`Ammo Slack Webhook: ${process.env.AMMO_SLACK_URL}`);
+  console.log(`Reloading Slack Webhook: ${process.env.RELOADING_SLACK_URL}`);
 
   return app;
 }
