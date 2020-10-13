@@ -1,18 +1,18 @@
 version: '3.7'
 
 services:
-  # ammo-puppet:
-  #   build: ./puppet
-  #   container_name: ammo-puppet
-  #   init: true
-  #   privileged: true
-  #   restart:
-  #     always
-  #   cap_add:
-  #     - SYS_ADMIN
-  #   volumes:
-  #     - ./puppet/ammo.js:/home/pptruser/index.js:ro
-  #   entrypoint: ['node', '/home/pptruser/index.js']
+  ammo-puppet:
+    build: ./puppet
+    container_name: ammo-puppet
+    init: true
+    privileged: true
+    restart:
+      always
+    cap_add:
+      - SYS_ADMIN
+    volumes:
+      - ./puppet/ammo.js:/home/pptruser/index.js:ro
+    entrypoint: ['node', '/home/pptruser/index.js']
 
   primer-puppet:
     build: ./puppet
