@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button [routerLink]="'/'">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <h1>AmmoPuppet</h1>
+      <span class="menu-spacer"></span>
+      <div>
+        <a mat-button [routerLink]="'/ammo'"> Ammo </a>
+        <a mat-button [routerLink]="'/bullets'"> Bullets </a>
+        <a mat-button [routerLink]="'/primers'"> Primers </a>
+        <a mat-button [routerLink]="'/powder'"> Powder </a>
+        <a mat-button [routerLink]="'/brass'"> Brass </a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>

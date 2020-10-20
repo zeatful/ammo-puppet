@@ -1,0 +1,40 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+    <ng-container matColumnDef="availability">
+        <th mat-header-cell *matHeaderCellDef>availability</th>
+        <td mat-cell *matCellDef="let element"> {{element.availability}} </td>
+    </ng-container>
+    <ng-container matColumnDef="count">
+        <th mat-header-cell *matHeaderCellDef>count</th>
+        <td mat-cell *matCellDef="let element"> {{element.count}} </td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>price</th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+    <ng-container matColumnDef="url">
+        <th mat-header-cell *matHeaderCellDef>url</th>
+        <td mat-cell *matCellDef="let element"> {{element.url}} </td>
+    </ng-container>
+    <ng-container matColumnDef="found">
+        <th mat-header-cell *matHeaderCellDef>found</th>
+        <td mat-cell *matCellDef="let element"> {{element.found}} </td>
+    </ng-container>
+    <ng-container matColumnDef="caliber">
+        <th mat-header-cell *matHeaderCellDef>caliber</th>
+        <td mat-cell *matCellDef="let element"> {{element.caliber}} </td>
+    </ng-container>
+    <ng-container matColumnDef="grain">
+        <th mat-header-cell *matHeaderCellDef>grain</th>
+        <td mat-cell *matCellDef="let element"> {{element.grain}} </td>
+    </ng-container>
+    <ng-container matColumnDef="model">
+        <th mat-header-cell *matHeaderCellDef>model</th>
+        <td mat-cell *matCellDef="let element"> {{element.model}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

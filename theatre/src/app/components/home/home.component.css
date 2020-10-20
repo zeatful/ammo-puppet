@@ -1,0 +1,11 @@
+
+.ammo-header-image {
+    background-image: url('https://www.flaticon.com/svg/static/icons/svg/123/123628.svg');
+    background-size: cover;
+    height: 25px;
+    width: 25px;
+}
+
+.mat-card-avatar {
+  border-radius: 0;
+}
