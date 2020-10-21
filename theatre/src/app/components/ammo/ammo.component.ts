@@ -20,10 +20,15 @@ export interface AmmoElement {
   styleUrls: ['./ammo.component.css']
 })
 export class AmmoComponent implements OnInit {
-  displayedColumns: string[] = ['model', 'caliber', 'grain', 'count', 'price', 'availability', 'found'];
+  displayedColumns: string[] = ['model', 'caliber', 'grain', 'count', 'price', 'url', 'availability', 'found'];
   dataSource;
+  subscription: Subscription;
 
-  constructor(private ammoService: AmmoService) {}
+  source = interval(300000);
+  
+  constructor(private ammoService: AmmoService) {
+    this.subscription = this.source.subscribe(val => this.fetchAmmo());
+  }
 
   fetchAmmo() {
     this.dataSource = this.ammoService.fetchAmmo();
@@ -31,5 +36,9 @@ export class AmmoComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchAmmo();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

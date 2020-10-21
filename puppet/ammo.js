@@ -24,14 +24,14 @@ const found = new Date().toISOString().replace("T", " ").substr(0, 19)
 // Array of Cabelas pages to scan
 const cabelasPages = [
   "https://www.cabelas.com/shop/en/winchester-super-x-power-point-centerfire-rifle-ammo",
-  "https://www.cabelas.com/shop/en/herters-target-handgun-ammo",
-  "https://www.cabelas.com/shop/en/herters-hunting-rifle-ammo",
-  "https://www.cabelas.com/shop/en/winchester-usa-handgun-ammo",
-  "https://www.cabelas.com/shop/en/winchester-usa-centerfire-target-range-rifle-ammo",
-  "https://www.cabelas.com/shop/en/winchester-usa-handgun-ammo-bulk-pack",
-  "https://www.cabelas.com/shop/en/winchester-usa-handgun-ammo-range-pack",
-  "https://www.cabelas.com/shop/en/remington-umc-centerfire-handgun-ammo",
-  "https://www.cabelas.com/shop/en/blazer-brass-handgun-ammo"
+  // "https://www.cabelas.com/shop/en/herters-target-handgun-ammo",
+  // "https://www.cabelas.com/shop/en/herters-hunting-rifle-ammo",
+  // "https://www.cabelas.com/shop/en/winchester-usa-handgun-ammo",
+  // "https://www.cabelas.com/shop/en/winchester-usa-centerfire-target-range-rifle-ammo",
+  // "https://www.cabelas.com/shop/en/winchester-usa-handgun-ammo-bulk-pack",
+  // "https://www.cabelas.com/shop/en/winchester-usa-handgun-ammo-range-pack",
+  // "https://www.cabelas.com/shop/en/remington-umc-centerfire-handgun-ammo",
+  // "https://www.cabelas.com/shop/en/blazer-brass-handgun-ammo"
 ]
 
 // helper sleep function
@@ -124,14 +124,14 @@ async function parseCabelasPage(page, url) {
 
     availability = (await page.evaluate((sel) => {
       // element will be out_of_stock or null if in stock
-      let instock = document.querySelector(sel)
-      return instock
+      let notInStock = document.querySelector(sel)
+      return notInStock
     }, availabilitySelector1) ? false : availability)
 
     availability = (await page.evaluate((sel) => {
       // element will be out_of_stock or null if in stock
-      let instock = document.querySelector(sel)
-      return instock
+      let notInStock = document.querySelector(sel)
+      return notInStock
     }, availabilitySelector2) ? false : availability)
 
     let count = await page.evaluate((sel) => {

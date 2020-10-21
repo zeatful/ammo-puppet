@@ -1,3 +1,11 @@
+@media only screen and (min-width: 1400px) {
+  .mat-card-image {
+    max-height: 155px;
+  }
+  .mat-card {
+    min-height: 380px;
+  }
+}
 
 .ammo-header-image {
     background-image: url('https://www.flaticon.com/svg/static/icons/svg/123/123628.svg');

@@ -1,5 +1,4 @@
 import {ApplicationConfig, BackendApplication} from './application';
-
 export * from './application';
 
 export async function main(options: ApplicationConfig = {}) {
@@ -32,6 +31,9 @@ if (require.main === module) {
         // useful when used with OpenAPI-to-GraphQL to locate your application
         setServersFromRequest: true,
       },
+      cors: {
+        origin: 'localhost:4200'
+      }
     },
   };
   main(config).catch(err => {

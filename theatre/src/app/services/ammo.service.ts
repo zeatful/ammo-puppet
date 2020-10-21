@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
 
-const AMMO_URL = 'localhost:4000/ammo';
+const AMMO_URL = 'http://localhost:4000/ammo';
 
 @Injectable({
   providedIn: 'root'
