@@ -23,8 +23,6 @@ var primerList = []
 
 // Array of Cabelas pages to scan
 const cabelasPages = [
-  "https://www.cabelas.com/shop/en/cci-standard-primers",
-  "https://www.cabelas.com/shop/en/winchester-pistol-primers",
   "https://www.cabelas.com/shop/en/winchester-magnum-small-pistol-primers",
   "https://www.cabelas.com/shop/en/federal-premium-gold-medal-match-primers"
 ]
@@ -137,6 +135,8 @@ async function parseCabelasPage(page, url) {
     description = (description ? description : size);
 
     let id = model + "-" + description + "-" + count + "-" + availability + "-" + price
+
+    console.log(`Found: ${id}`);
 
     // push entry
     primerList.push({ id, size, model, price, description, count, availability, url, found})
